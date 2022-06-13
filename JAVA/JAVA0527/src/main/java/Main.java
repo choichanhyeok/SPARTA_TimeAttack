@@ -1,4 +1,7 @@
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 class Calculator {
     public Calculator() {
@@ -16,16 +19,16 @@ class Calculator {
             }
         }
         // ++ 좀더 현대적인 방법
-//        result = 0;
-//        List<Integer> listA = Arrays.stream(A)
-//                .boxed()
-//                .collect(Collectors.toList());
-//        List<Integer> listB = Arrays.stream(B)
-//                .boxed()
-//                .collect(Collectors.toList());
-//        listA.retainAll(listB);
-//        result = listA.stream().mapToInt(Integer::intValue).sum();
-        return result;
+        result = 0;
+        List<Integer> listA = Arrays.stream(A)
+                .boxed()
+                .collect(Collectors.toList());
+        List<Integer> listB = Arrays.stream(B)
+                .boxed()
+                .collect(Collectors.toList()); // list형태의 컬랙션 반환
+        listA.retainAll(listB);                // A와 B 합쳐
+        result = listA.stream().mapToInt(Integer::intValue).sum();
+        return result; // mapToInt를 통해 정수형으로 변환 후 sum()
     }
 
     // Sum of A - B
