@@ -46,5 +46,4 @@ public class MemberController {
         List<ResponseMemberDTO> responseMemberDTOList = memberService.recommendMember(id);
         return ApiResponse.success("result", responseMemberDTOList);
     }
-
 }
